@@ -27,8 +27,5 @@ public class MainModel implements MainMvp.ProvidedModelOps {
         }
     }
 
-    @Override
-    public String getDemoString() {
-        return "Project MVP setUp done";
-    }
+
 }

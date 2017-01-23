@@ -16,7 +16,7 @@ import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.present
 public class MainActivity extends AppCompatActivity implements MainMvp.RequiredViewOps{
 
 
-    private Button fragmentButton;
+
 
     private MainMvp.ProvidedPresenterOps mPresenter;
 
@@ -39,14 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainMvp.RequiredV
 
     private void setUpViews(){
 
-        fragmentButton = (Button) findViewById(R.id.cardTypeBtn);
 
-        fragmentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mPresenter.showStatus();
-            }
-        });
     }
 
     private void setUpMVP(){

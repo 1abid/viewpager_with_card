@@ -63,10 +63,7 @@ public class MainPresenter implements MainMvp.ProvidedPresenterOps, MainMvp.Requ
         mView = new WeakReference<MainMvp.RequiredViewOps>(view);
     }
 
-    @Override
-    public void showStatus() {
-        getView().showToast(makeToast(mModel.getDemoString()));
-    }
+
 
 
     /**

@@ -37,7 +37,6 @@ public interface MainMvp {
 
         void onDestroy(boolean isChangingConfiguration);
         void setView(RequiredViewOps view);
-        void showStatus();
     }
 
 
@@ -61,7 +60,7 @@ public interface MainMvp {
 
         void onDestroy(boolean isChangingConfiguration);
 
-        String getDemoString();
+
 
     }
 

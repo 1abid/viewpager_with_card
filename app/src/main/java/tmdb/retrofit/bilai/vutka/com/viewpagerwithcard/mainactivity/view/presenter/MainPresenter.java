@@ -2,13 +2,19 @@ package tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.presen
 
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardPagerAdapter;
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.model.CardItem;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.mvp.MainMvp;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.utils.Toastmaker;
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.views.ShadowTransformer;
 
 /**
  * Created by vutka bilai on 1/22/17.
@@ -25,9 +31,14 @@ public class MainPresenter implements MainMvp.ProvidedPresenterOps, MainMvp.Requ
     //model reference
     private MainMvp.ProvidedModelOps mModel;
 
+    private ShadowTransformer mCardShadowTransformer;
+    private CardPagerAdapter mCardAdapter;
+
 
     public MainPresenter(MainMvp.RequiredViewOps mView) {
         this.mView = new WeakReference<MainMvp.RequiredViewOps>(mView);
+
+
     }
 
 
@@ -64,6 +75,17 @@ public class MainPresenter implements MainMvp.ProvidedPresenterOps, MainMvp.Requ
     }
 
 
+
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        getView().getShadowTransformer().enableScaling(b);
+    }
+
+    @Override
+    public List<CardItem> getCardItems() {
+        return mModel.generateCards();
+    }
 
 
     /**

@@ -2,7 +2,15 @@ package tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.mvp;
 
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
+import android.widget.CompoundButton;
 import android.widget.Toast;
+
+import java.util.List;
+
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardPagerAdapter;
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.model.CardItem;
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.views.ShadowTransformer;
 
 /**
  * Created by vutka bilai on 1/22/17.
@@ -23,6 +31,8 @@ public interface MainMvp {
         Context getAppContext();
         Context getActivityContxt();
 
+        ShadowTransformer getShadowTransformer();
+
         void showToast(Toast toast);
 
     }
@@ -37,6 +47,12 @@ public interface MainMvp {
 
         void onDestroy(boolean isChangingConfiguration);
         void setView(RequiredViewOps view);
+
+
+        void onCheckedChanged(CompoundButton compoundButton, boolean b);
+
+        List<CardItem> getCardItems();
+
     }
 
 
@@ -60,7 +76,7 @@ public interface MainMvp {
 
         void onDestroy(boolean isChangingConfiguration);
 
-
+        List<CardItem> generateCards();
 
     }
 

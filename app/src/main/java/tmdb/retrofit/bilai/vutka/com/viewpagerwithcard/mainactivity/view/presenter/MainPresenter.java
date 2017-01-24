@@ -3,6 +3,7 @@ package tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.presen
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardAdapter;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardPagerAdapter;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.model.CardItem;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.mvp.MainMvp;
@@ -21,7 +23,7 @@ import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.views.S
  * mail : la4508@gmail.com
  */
 
-public class MainPresenter implements MainMvp.ProvidedPresenterOps, MainMvp.RequiredPresenterOps {
+public class MainPresenter implements MainMvp.ProvidedPresenterOps, MainMvp.RequiredPresenterOps ,CardAdapter {
 
     // View reference. We use as a WeakReference
     // because the Activity could be destroyed at any time
@@ -144,5 +146,18 @@ public class MainPresenter implements MainMvp.ProvidedPresenterOps, MainMvp.Requ
     }
 
 
+    @Override
+    public float getBaseElevation() {
+        return 0;
+    }
 
+    @Override
+    public CardView getCardViewAt(int position) {
+        return null;
+    }
+
+    @Override
+    public int getCount() {
+        return 0;
+    }
 }

@@ -3,11 +3,15 @@ package tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.mvp;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import java.util.List;
 
+import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardAdapter;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardPagerAdapter;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.model.CardItem;
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.views.ShadowTransformer;
@@ -51,7 +55,16 @@ public interface MainMvp {
 
         void onCheckedChanged(CompoundButton compoundButton, boolean b);
 
-        List<CardItem> getCardItems();
+        void addCardItem();
+
+        float getBaseElevation();
+        CardView getCardViewAt(int position);
+        int getCount();
+
+
+        boolean isViewFromObject(View view, Object object);
+        Object instantiateItem(ViewGroup container, int position);
+        void destroyItem(ViewGroup container, int position, Object object);
 
     }
 

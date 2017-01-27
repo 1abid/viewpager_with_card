@@ -50,16 +50,9 @@ public class MainActivity extends AppCompatActivity implements MainMvp.RequiredV
         ((CheckBox)findViewById(R.id.checkBox)).setOnCheckedChangeListener(this);
 
         setUpMVP();
+        mPresenter.addCardItem();
 
-
-        /**
-         * I just messed up here
-         * this not view's job to adapter
-         * TODO : move this shit to presenter it's his headache
-         *
-         */
         mCardAdapter = new CardPagerAdapter(mPresenter);
-        mCardAdapter.addCardItem();
         mCardShadowTransformer = new ShadowTransformer(mViewPager , mCardAdapter);
 
         mViewPager.setAdapter(mCardAdapter);

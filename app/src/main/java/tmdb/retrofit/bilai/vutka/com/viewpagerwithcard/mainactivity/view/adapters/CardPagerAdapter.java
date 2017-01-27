@@ -19,33 +19,24 @@ import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.mvp.Mai
 
 public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
 
-    private List<CardView> mViews;
-    private List<CardItem> mData;
-    private float mBaseElevation;
+
     private MainMvp.ProvidedPresenterOps mPresenter;
 
     public CardPagerAdapter(MainMvp.ProvidedPresenterOps mPresenter) {
-        this.mViews = new ArrayList<>();
-        this.mData = new ArrayList<>();
+
         this.mPresenter = mPresenter;
     }
 
 
-    public void addCardItem(){
-        mViews.add(null);
-        for (CardItem card: mPresenter.getCardItems()) {
-            mData.add(card);
-        }
-    }
 
     @Override
     public float getBaseElevation() {
-        return 0;
+        return mPresenter.getBaseElevation();
     }
 
     @Override
     public CardView getCardViewAt(int position) {
-        return null;
+        return mPresenter.getCardViewAt(position);
     }
 
     /**
@@ -53,17 +44,22 @@ public class CardPagerAdapter extends PagerAdapter implements CardAdapter {
      */
     @Override
     public int getCount() {
-        return 0;
+        return mPresenter.getCount();
     }
 
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return false;
+        return mPresenter.isViewFromObject(view , object);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        return super.instantiateItem(container, position);
+        return mPresenter.instantiateItem(container , position);
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        mPresenter.destroyItem(container , position , object);
     }
 }

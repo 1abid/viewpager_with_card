@@ -2,6 +2,7 @@ package tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.views;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 
 import tmdb.retrofit.bilai.vutka.com.viewpagerwithcard.mainactivity.view.adapters.CardAdapter;
@@ -26,7 +27,10 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
 
     public void enableScaling(boolean enable) {
 
+
+
         if (mScalingEnabled && !enable) {
+            //Log.d(getClass().getSimpleName() , "scale :" +enable + "bortoman obostha "+ mScalingEnabled);
             //shrink man card
             CardView currentCard = mAdapter.getCardViewAt(mViewPager.getCurrentItem());
 
@@ -72,12 +76,14 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
             nextPosition = position ;
             realOffset = 1 - positionOffset ;
 
+            //Log.d(getClass().getSimpleName() , "realoffset left" + realOffset);
         }else {
 
             nextPosition = position +1 ;
             realCurrentPosition = position ;
             realOffset = positionOffset ;
 
+            //Log.d(getClass().getSimpleName() , "realoffset right" + realOffset);
         }
 
         //avoid overscroll
@@ -91,13 +97,17 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
         //and the views weren't created yet
         if(currentCard != null){
             if(mScalingEnabled){
+
                 currentCard.setScaleX((float)(1 + 0.1 * (1 - realOffset)));
                 currentCard.setScaleY((float)(1 + 0.1 * (1 - realOffset)));
+            } else {
+                Log.d(getClass().getSimpleName() , realOffset + "card unscaled " + "card scale x "+currentCard.getScaleX() + "scale y "+currentCard.getScaleY());
             }
 
             currentCard.setCardElevation((baseElevation + baseElevation
                     * (CardAdapter.MAX_ELEVATION_FACTOR - 1) * (1 - realOffset)));
         }
+
 
 
         CardView nextCard = mAdapter.getCardViewAt(nextPosition);
@@ -106,8 +116,8 @@ public class ShadowTransformer implements ViewPager.OnPageChangeListener, ViewPa
         //we already destroyed or a fragment might not have been created yet
         if(nextCard != null){
             if (mScalingEnabled){
-                nextCard.setScaleX((float)(1 + 0.1 * (1 - realOffset)));
-                nextCard.setScaleY((float)(1 + 0.1 * (1 - realOffset)));
+                nextCard.setScaleX(1.1f);
+                nextCard.setScaleY(1.1f);
             }
 
             nextCard.setCardElevation((baseElevation + baseElevation

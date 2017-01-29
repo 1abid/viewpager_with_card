@@ -47,6 +47,9 @@ public class MainModel implements MainMvp.ProvidedModelOps {
         CardItem cardItemThree = new CardItem(R.string.title_3 , R.string.text_1);
         cards.add(cardItemThree);
 
+        CardItem cardItemFour = new CardItem(R.string.title_4, R.string.text_1);
+        cards.add(cardItemFour);
+
         return cards;
     }
 
